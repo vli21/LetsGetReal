@@ -56,7 +56,11 @@ public class RealNumber{
  *this divided by the other
  */
  public RealNumber divide(RealNumber other){
-       return null;
+   if (other.value==0){
+        throw new IllegalArgumentException("other.value=0, cannot divide by 0");
+   }
+   RealNumber quotient= new RealNumber(this.value/other.value);
+   return quotient;
  }
 
  /*
