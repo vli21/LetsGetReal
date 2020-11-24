@@ -11,13 +11,13 @@ public class RationalNumber extends RealNumber {
     numerator = nume;
     denominator = deno;
     if (deno == 0){
-         nume = 0;
-         deno = 1;
+         numerator = 0;
+         denominator = 1;
       }
     else{
     if (deno< 0){
-      nume *= -1;
-      deno *= -1;
+      numerator *= -1;
+      denominator *= -1;
       }
     }
       reduce();
@@ -44,8 +44,7 @@ public class RationalNumber extends RealNumber {
   *and denominator as this RationalNumber but reversed.
   */
   public RationalNumber reciprocal(){
-    RationalNumber reciprocal=  new RationalNumber (denominator, numerator);
-    return reciprocal;
+    return new RationalNumber(denominator, numerator);
   }
   /**
   *@return true when the RationalNumbers have the same numerators and denominators, false otherwise.
@@ -68,13 +67,8 @@ public class RationalNumber extends RealNumber {
          fraction = "0"+"/"+"1";
        }
       else{
-         if (denominator == 1){
-            fraction= numerator + "";
-          }
-      else{
          fraction = numerator + "/" + denominator;
        }
-      }
       return fraction;
   }
 
@@ -131,26 +125,34 @@ public class RationalNumber extends RealNumber {
   *Return a new RationalNumber that is the product of this and the other
   */
   public RationalNumber multiply(RationalNumber other){
-    return null;
+    return new RationalNumber (numerator *other.getNumerator(), denominator * other.getDenominator());
   }
 
   /**
   *Return a new RationalNumber that is the this divided by the other
   */
   public RationalNumber divide(RationalNumber other){
-    return null;
+    return multiply (other.reciprocal());
   }
 
   /**
   *Return a new RationalNumber that is the sum of this and the other
   */
   public RationalNumber add(RationalNumber other){
-    return null;
+    int deno = denominator * other.getDenominator();
+    int nume1 = numerator * other.getDenominator();
+    int nume2 = other.getNumerator() * denominator;
+    int numesum = nume1 + nume2;
+    return new RationalNumber(numesum,deno);
   }
   /**
   *Return a new RationalNumber that this minus the other
   */
   public RationalNumber subtract(RationalNumber other){
-    return null;
+    int deno = denominator * other.getDenominator();
+    int nume1 = numerator * other.getDenominator();
+    int nume2 = other.getNumerator() * denominator;
+    int numediff = nume1- nume2;
+    return new RationalNumber(numediff,deno);
   }
 }
