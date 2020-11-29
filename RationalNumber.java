@@ -1,4 +1,4 @@
-public class RationalNumber extends RealNumber {
+public class RationalNumber extends Number {
   private int numerator, denominator;
 
   /**Initialize the RationalNumber with the provided values
@@ -7,7 +7,8 @@ public class RationalNumber extends RealNumber {
   *@param deno the denominator
   */
   public RationalNumber(int nume, int deno){
-    super(((double) nume) / deno);//this value is ignored!
+    /* Super class is now Number
+    super(((double) nume) / deno);//this value is ignored!*/
     numerator = nume;
     denominator = deno;
     if (deno == 0){
@@ -64,8 +65,11 @@ public class RationalNumber extends RealNumber {
   public String toString(){
     String fraction;
       if (numerator == 0){
-         fraction = "0"+"/"+"1";
+         fraction = "0";
        }
+      if (denominator==1){
+        fraction = numerator+"";
+      }
       else{
          fraction = numerator + "/" + denominator;
        }
