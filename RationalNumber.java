@@ -25,7 +25,10 @@ public class RationalNumber extends Number {
   }
 
   public double getValue(){
-    return this.getValue();
+    if (denominator==0){
+      return 0;
+    }
+    return super.getValue();
   }
 
   /**
